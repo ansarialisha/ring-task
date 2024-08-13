@@ -1,0 +1,35 @@
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+.box-1{
+    height: 375px;
+    padding: 16px;
+    border: 1px solid #ddd;
+    }
+img{
+    height: 250px;
+    object-fit: cover;
+    }
+.grid-container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px; 
+    }
+.box-1:hover{
+    border: 1px solid black;
+}
+.child-1{
+    height: 70%;
+}
+.child-2{
+    height: 30%;
+}
+.child-3{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+    

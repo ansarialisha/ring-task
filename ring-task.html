@@ -1,0 +1,498 @@
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        <link rel="stylesheet" href="ring-task.css">
+    </head>
+    <body>
+        <div class="grid-container" x-data="ringTaskAlpineCOmponent()">
+        <template x-for="item in items">
+            <div class="box-1">
+                <div class="child-1">
+                    <img :src="item.images[0]" :alt="item.name"/>
+                </div>   
+                <div class="child-2">
+                    <div class="item-name" x-text="item.name"></div>
+                    <div class="item-price" x-text="item.price"></div>
+                        
+                    <div class="child-3">
+                        <div class="child-4">
+                            <template x-for="shape in item.shape" :key="shape">
+                                <div x-text="shape"></div>
+                            </template>
+                        </div>
+                        <div class="child-4">
+                            <template x-for="color in item.color" :key="color">
+                                <div x-text="color"></div>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+        </div>  
+        <script>
+            function ringTaskAlpineCOmponent() {
+                return {
+                    items: [
+                        {
+                            images: [
+                                './images/Linny.webp',
+                            ],
+                            name: 'Linny',
+                            price: '$1,000',
+                            shape: [
+                                'Round',
+                                'Oval',
+                                'Emerald Cut'
+                            ]
+                        },
+                        {
+                            images: [
+                                './images/Bonnie.jpg'
+                            ],
+                            name: 'Bonnie',
+                            price: '$1,275',
+                        },
+                        {
+                            images: [
+                                './images/Marline.jpg'
+                            ],
+                            name: 'Marline',
+                            price: '$1,325',
+                            color: [
+                                'Yellow Gold',
+                                'White Gold',
+                            ]
+                        },
+                        {
+                            images: [
+                                './images/Sandi.jpg'
+                            ],
+                            name: 'Sandi',
+                            price: '$1,375',
+                            color: [
+                                'Yellow Gold',
+                                'White Gold',
+                            ]
+                        },
+                        {
+                            images: [
+                                './images/Hart.jpg'
+                            ],
+                            name: 'Hart',
+                            price: '$1,875',
+                            color: [
+                                'Yellow Gold',
+                                'White Gold',
+                            ],
+                            shape: [
+                                'Round',
+                                'Oval',
+                                'Emerald Cut'
+                            ]
+                        },
+                        {
+                            images: [
+                                './images/Reema.jpg'    
+                            ],
+                            name: 'Reema',
+                            price: '$2,100',
+                        },
+                        {
+                            images: [
+                                './images/Martedi.jpg'
+                            ],
+                            name: 'Martedi',
+                            price: '$1,725',
+                            color: [
+                                'Yellow Gold',
+                                'White Gold',
+                            ],
+                            shape: [
+                                'Round',
+                                'Oval',
+                                'Emerald Cut'
+                            ]
+                        },
+                        {
+                            images: [
+                                './images/Love.jpg'
+                            ],
+                            name: 'Love',
+                            price: '$2,475',
+                            color: [
+                                'Yellow Gold',
+                                'Yellow/White Gold',
+                                'White/Rose Gold',
+                                'Platinum'
+                            ],
+                        },
+                        {
+                            images: [
+                                './images/Evelina.jpg'
+                            ],
+                            name: 'Evelina',
+                            price: '$800',
+                            color: [
+                                'Yellow/White Gold',
+                                'White Gold',
+                                'Platinum'
+                            ],
+                            shape: [
+                                'Round',
+                                'Oval',
+                                'EmeraldCut'
+                            ]
+                        },
+                        {
+                            images: [
+                                './images/Zaira.jpg'
+                            ],
+                            name: 'Zaira',
+                            price: '$4,500',
+                            color: [
+                                'Yellow/White Gold',
+                                'White Gold',
+                                'Platinum'
+                            ],
+                            shape: [
+                                'Round',
+                                'Oval',
+                                'EmeraldCut'
+                            ]
+                        },
+                        {
+                            images: [
+                                './images/Grasey.png',
+                            ],
+                            name: 'Grasey',
+                            price: '$900',
+                            shape: [
+                                'Round',
+                                'Oval',
+                            ]
+                        },
+                        {
+                            images: [
+                                './images/Eva.png'
+                            ],
+                            name: 'Eva',
+                            price: '$1,800',
+                            color: [
+                                'Yellow Gold',
+                                'White Gold',
+                            ]
+                        },
+                        {
+                            images: [
+                                './images/Eliza.png'
+                            ],
+                            name: 'Eliza',
+                            price: '$1,100',
+                            color: [
+                                'White Gold',
+                                'Yellow/White Gold',
+                                'White/Rose Gold',
+                            ],
+                            shape: [
+                                'Round',
+                                'Oval',
+                                'Princess Cut',
+                                'Pear shape',
+                            ]
+                        },
+                        {
+                            images: [
+                                './images/Kera.png'
+                            ],
+                            name: 'Kera',
+                            price: '$13,500',
+                        },
+                        {
+                            images: [
+                                './images/Luca.png'
+                            ],
+                            name: 'Luca',
+                            price: '$2,975',
+                            color: [
+                                'Yellow Gold',
+                                'White Gold',
+                                'Platinum',
+                                'Rose Gold',
+
+                            ],
+                            shape: [
+                                'Round',
+                                'Oval',
+                                'EmeraldCut',
+                                'Cushion Cut',
+                                'Princess Cut',
+                            ]
+                        },
+                        {
+                            images: [
+                                './images/Delphi.png'
+                            ],
+                            name: 'Delphi',
+                            price: '$1,125',
+                            color: [
+                                'Yellow Gold',
+                                'White Gold',
+                                'Platinum',
+                                'Rose Gold',
+
+                            ],
+                        },
+                        {
+                            images: [
+                                './images/Charli.png'
+                            ],
+                            name: 'Charli',
+                            price: '$1,475',
+                        },
+                        {
+                            images: [
+                                './images/Frances.png'
+                            ],
+                            name: 'Frances',
+                            price: '$1,125',
+                        },
+                        {
+                            images: [
+                                './images/Luca.png'
+                            ],
+                            name: 'Luca',
+                            price: '$1,550',
+                            color: [
+                                'Yellow Gold',
+                                'White Gold',
+
+                            ],
+                            shape: [
+                                'Round',
+                                'Oval',
+                                'EmeraldCut',
+                                'Pear shape',
+                            ]
+                        },
+                        {
+                            images: [
+                                './images/Adeena.png'
+                            ],
+                            name: 'Adeena',
+                            price: '$2,100',
+                        },
+                        {
+                            images: [
+                                './images/Caitte.png'
+                            ],
+                            name: 'Caitte',
+                            price: '$3,200',
+                        },
+                        {
+                            images: [
+                                './images/Flores.png'
+                            ],
+                            name: 'Flores',
+                            price: '$5,100',
+                        },
+                        {
+                            images: [
+                                './images/Faith.png'
+                            ],
+                            name: 'Faith',
+                            price: '$3,600',
+                        },
+                        {
+                            images: [
+                                './images/Mason.png'
+                            ],
+                            name: 'Mason',
+                            price: '$2,075',
+                            color: [
+                                'White Gold',
+                                'Yellow/White Gold',
+                                'White/Rose Gold',
+
+                            ],
+                            shape: [
+                                'Round',
+                                'Oval',
+                                'EmeraldCut',
+                            ]
+                        },
+                        {
+                            images: [
+                                './images/Acacia.png'
+                            ],
+                            name: 'Acacia',
+                            price: '$3,600',
+                            color: [
+                                'White Gold',
+                                'Yellow Gold',
+                                'Platinum',
+                            ],
+                            shape: [
+                                'Round',
+                                'Princess Cut',
+                                
+                            ]
+                        },
+                        {
+                            images: [
+                                './images/Anita.png'
+                            ],
+                            name: 'Anita',
+                            price: '$5,100',
+                        },
+                        {
+                            images: [
+                                './images/Juliet.png'
+                            ],
+                            name: 'Juliet',
+                            price: '$2,975',
+                            color: [
+                                'White Gold',
+                                'Yellow Gold',
+                                'Rose Gold',
+                                'Platinum',
+                            ],
+                        },
+                        {
+                            images: [
+                                './images/Bara.png'
+                            ],
+                            name: 'Bara',
+                            price: '$1,300',
+                            color: [
+                                'White Gold',
+                                'Yellow Gold',
+                            ],
+                            shape: [
+                                'Round',
+                                'EmeraldCut',
+                                
+                            ]
+                        },
+                        {
+                            images: [
+                                './images/Sanna.png'
+                            ],
+                            name: 'Sanna',
+                            price: '$1,475',
+                            color: [
+                                'White Gold',
+                                'Yellow Gold',
+                                'White/Rose Gold',
+                                'Platinum',
+
+
+                            ],
+                            shape: [
+                                'Round',
+                                'Oval',
+                                'Cushion Cut',
+                            ]
+                        },
+                        {
+                            images: [
+                                './images/Ryland.png'
+                            ],
+                            name: 'Ryland',
+                            price: '$4,000',
+                            color: [
+                                'White Gold',
+                                'Yellow Gold',
+                                'Rose Gold',
+                            ],
+                        },
+                        {
+                            images: [
+                                './images/Aiva.png'
+                            ],
+                            name: 'Aiva',
+                            price: '$1,825',
+                            color: [
+                                'White Gold',
+                                'Yellow Gold',
+                            ],
+                            shape: [
+                                'Oval',
+                                'Round',
+                            ]
+                        },
+                        {
+                            images: [
+                                './images/Mystic.png'
+                            ],
+                            name: 'Mystic',
+                            price: '$4,600',
+                            color: [
+                                'White Gold',
+                                'White/Rose Gold',
+                               
+                            ],
+                        },
+                        {
+                            images: [
+                                './images/Darline.png'
+                            ],
+                            name: 'Darline',
+                            price: '$1,725',
+                            shape: [
+                                'Oval',
+                                'Emerald Cut',
+                                'Radiant Cut',
+                            ]
+                        },
+                        {
+                            images: [
+                                './images/Leina.png'
+                            ],
+                            name: 'Leina',
+                            price: '$2,050',
+                            color: [
+                                'White Gold',
+                                'Yellow Gold',
+                                'Rose Gold',
+                            ],
+                        },
+                        {
+                            images: [
+                                './images/Feah.png'
+                            ],
+                            name: 'Feah',
+                            price: '$3,250',
+                            color: [
+                                'White Gold',
+                                'Yellow/White Gold',
+                            ],
+                        },
+                        {
+                            images: [
+                                './images/Brexley.png'
+                            ],
+                            name: 'Brexley',
+                            price: '$2,750',
+                            color: [
+                                'White Gold',
+                                'Yellow Gold',
+                                'Rose Gold',
+                            ],
+                            shape: [
+                                'Oval',
+                                'Round',
+                                'Emerald Cut',
+                                'Cushion Cut',
+                            ]
+                        },
+                    ],
+                    init(){
+                        console.log(this.items);
+                    }
+                }
+            }   
+        </script>
+    </body>
+</html>
