@@ -37,7 +37,7 @@ body{
 .child-3{
     display: flex;
     width: 100%;
-    justify-content: space-between;
+
     }
 .item-price{
     font-weight: 800;
@@ -46,6 +46,13 @@ body{
 .item-name{
     font-size: 14px;
 }
+.items1-child-1{
+    height: 70%;
+    }
+.items1-child-2{
+    height: 25%;
+    padding:  10px 10px 10px 20px;
+    }
 .box-1:hover{
     border: 1px solid black;
 }
