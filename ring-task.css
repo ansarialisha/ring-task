@@ -3,33 +3,56 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    }
+.nunito-sans {
+    font-family: "Nunito Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings:"wdth" 100, "YTLC" 500;
     }
 .box-1{
-    height: 375px;
-    padding: 16px;
+   width: 280px;
+   aspect-ratio: 1/1.5; 
     border: 1px solid #ddd;
     }
-img{
+.p-10{
     height: 250px;
     object-fit: cover;
+    padding: 15px;
     }
 .grid-container{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 10px; 
     }
-.box-1:hover{
-    border: 1px solid black;
-}
 .child-1{
     height: 70%;
-}
+    }
 .child-2{
-    height: 30%;
-}
+    height: 25%;
+    padding:  10px 10px 10px 20px;
+    }
 .child-3{
     display: flex;
     width: 100%;
     justify-content: space-between;
+    }
+.item-price{
+    font-weight: 800;
+    padding-top: 8px;
 }
-    
+.item-name{
+    font-size: 14px;
+}
+.box-1:hover{
+    border: 1px solid black;
+}
+.child-1:hover{
+    border-bottom: 1px solid black;  
+    cursor: pointer;
+}
+.child-2:hover{
+    border-top: 1px solid black;
+}
