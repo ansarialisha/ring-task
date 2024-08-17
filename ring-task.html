@@ -1,6 +1,6 @@
 <html>
     <head>
-
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Moderustic:wght@300..800&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
@@ -9,52 +9,467 @@
         <link rel="stylesheet" href="ring-task.css">
     </head>
     <body class="nunito-sans">
-        <div class="grid-container" x-data="ringTaskAlpineCOmponent()">
-
-            <template x-for="item in items1">
-                <div class="box-1">
-                    <div class="items1-child-1">
+        <div class="grid-container" x-data="ringTaskAlpineComponent()">
+            <!-- structure for both shapes and color -->
+            <template x-for="item in items" :key="item.name">
+                <div class="box-1" @mouseover="hoveredItem = item" @mouseleave="hoveredItem = null">
+                    <div class="child-1">
                         <img :src="item.images[0]" :alt="item.name" class="p-10"/>
                     </div>   
-                    <div class="items1-child-2">   
+                    <div class="child-2">
+                        <div x-show="hoveredItem !== item">
+                            <div class="item-name" x-text="item.name"></div>
+                            <div class="item-price" x-text="item.price"></div>
+                        </div>
+                        <div class="child-3" x-show="hoveredItem === item">
+                            <div class="shape-images">
+                                <template x-for="shape in item.shape" :key="shape">
+                                    <img :src="shape" class="height-width"/>
+                                </template>
+                            </div>
+                            <div class="color-images">
+                                <template x-for="color in item.color" :key="color">
+                                    <img :src="color" class="height-width"/>
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+            <!-- structure for colors or shape only -->
+            <template x-for="item in items1" :key="item.name">
+                <div class="box-1" @mouseover="hoveredItem = item" @mouseleave="hoveredItem = null">
+                    <div class="child-1">
+                        <img :src="item.images[0]" class="p-10"/>
+                    </div>   
+                    <div class="child-2">
+                        <div x-show="hoveredItem !== item">
+                            <div class="item-name" x-text="item.name"></div>
+                            <div class="item-price" x-text="item.price"></div>
+                        </div>
+                        <div class="child-3" x-show="hoveredItem === item">
+                            <div class="shape-color img">
+                                <template x-for="shape in item.shape" :key="shape">
+                                    <img :src="shape" class="height-width"/>
+                                </template>
+                                <template x-for="color in item.color" :key="color">
+                                    <img :src="color" class="height-width"/>
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+            <!-- structure for name and price only -->
+            <template x-for="item in items2">
+                <div class="box-1">
+                    <div class="items2-child-1">
+                        <img :src="item.images[0]" :alt="item.name" class="p-10"/>
+                    </div>   
+                    <div class="items2-child-2">   
                         <div class="item-name" x-text="item.name"></div>
                         <div class="item-price" x-text="item.price"></div>
                     </div>
                 </div>
             </template>
 
-            <template x-for="item in items">
-                <div class="box-1" @mouseover="open = true" @mouseleave="open = false">
-                    <div class="child-1">
-                        <img :src="item.images[0]" :alt="item.name" class="p-10"/>
-                        <!-- <img :src="item.images[1]"> -->
-                    </div>   
-                    <div class="child-2">
-                        <div x-show="!open">
-                            <div class="item-name" x-text="item.name"></div>
-                            <div class="item-price" x-text="item.price"></div>
-                        </div>
-                        <div class="child-3" x-show="open">
-                            <div class="shape-images">
-                                <template x-for="shape in item.shape" :key="shape">
-                                    <img :src="shape" style="height: 32px; width: 32px;"/>
-                                </template>
-                            </div>
-                            <div class="child-4">
-                                <template x-for="color in item.color" :key="color">
-                                    <div x-text="color"></div>
-                                </template>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </template>
         </div>  
         <script>
-            function ringTaskAlpineCOmponent() {
+            function ringTaskAlpineComponent() {
                 return {
-                    open: false,
+                    hoveredItem: null,
+                                
+                    items: [ 
+                        {
+                            images: [
+                                './images/Hart.jpg'
+                            ],
+                            name: 'Hart - 14K White Gold Hidden Halo Oval Diamond Engagement Ring',
+                            price: '$1,875',
+                            color: [
+                                './images/yellow-gold.svg',
+                                './images/white-gold.svg',
+                            ],
+                            shape: [
+                                './images/round-shape.svg',
+                                './images/oval-shape.svg',
+                                './images/emerald-cut.svg',
+                            ]
+                        },
+                        {
+                            images: [
+                                './images/Martedi.jpg'
+                            ],
+                            name: 'Martedi - 14K White Gold Floral Round Diamond Engagement Ring',
+                            price: '$1,725',
+                            color: [
+                                './images/yellow-gold.svg',
+                                './images/white-gold.svg',
+                            ],
+                            shape: [
+                                './images/round-shape.svg',
+                                './images/oval-shape.svg',
+                                './images/emerald-cut.svg',
+                            ]
+                        },
+                        {
+                            images: [
+                                './images/Evelina.jpg'
+                            ],
+                            name: 'Evelina - 14K White-Yellow Gold Diamond Engagement Ring',
+                            price: '$800',
+                            color: [
+                                './images/white-yellow-gold.svg',
+                                './images/white-gold.svg',
+                                './images/platinum.svg'
+                            ],
+                            shape: [
+                                './images/round-shape.svg',
+                                './images/oval-shape.svg',
+                                './images/emerald-cut.svg',
+                            ]
+                        },
+                        {
+                            images: [
+                                './images/Zaira.jpg'
+                            ],
+                            name: 'Zaira - 14K White-Rose Gold Round Free Form Diamond Engagement Ring',
+                            price: '$4,500',
+                            color: [
+                                './images/white-yellow-gold.svg',
+                                './images/white-gold.svg',
+                                './images/platinum.svg'
+                            ],
+                            shape: [
+                                './images/round-shape.svg',
+                                './images/oval-shape.svg',
+                                './images/emerald-cut.svg',
+                            ]
+                        },
+                        {
+                            images: [
+                                './images/Eliza.png'
+                            ],
+                            name: 'Eliza - Vintage Inspired 14K White Gold Split Shank Round Diamond Engagement Ring',
+                            price: '$1,100',
+                            color: [
+                                './images/white-gold.svg',
+                                './images/white-yellow-gold.svg',
+                                './images/rose-white-gold.svg',
+                            ],
+                            shape: [
+                                './images/round-shape.svg',
+                                './images/oval-shape.svg',
+                                './images/princess-cut.svg',
+                                './images/pear-shape.svg',
+                            ]
+                        },
+                        {
+                            images: [
+                                './images/Luca.png'
+                            ],
+                            name: 'Luca - Art Deco 14K White Gold Round Diamond Channel Set Engagement Ring',
+                            price: '$2,975',
+                            color: [
+                                './images/yellow-gold.svg',
+                                './images/white-gold.svg',
+                                './images/platinum.svg',
+                                './images/rose-gold.svg',
+
+                            ],
+                            shape: [
+                                 './images/round-shape.svg',
+                                './images/oval-shape.svg',
+                                './images/emerald-cut.svg',
+                                './images/cushion-cut.svg',
+                                './images/princess-cut.svg',
+                            ]
+                        },      
+                        {
+                            images: [
+                                './images/Rainah.png'
+                            ],
+                            name: 'Rainah - 14K White Gold Hidden Halo Oval Diamond Engagement Ring',
+                            price: '$1,550',
+                            color: [
+                                './images/yellow-gold.svg',
+                                './images/white-gold.svg',
+
+                            ],
+                            shape: [
+                                 './images/round-shape.svg',
+                                './images/oval-shape.svg',
+                                './images/emerald-cut.svg',
+                            ]
+                        },
+                        {
+                            images: [
+                                './images/Mason.png'
+                            ],
+                            name: 'Mason - 14K White Gold Round Diamond Engagement Ring',
+                            price: '$2,075',
+                            color: [
+                               './images/white-gold.svg',
+                                './images/white-yellow-gold.svg',
+                                './images/rose-white-gold.svg',
+
+                            ],
+                            shape: [
+                                 './images/round-shape.svg',
+                                './images/oval-shape.svg',
+                                './images/emerald-cut.svg',
+                            ]
+                        },
+                        {
+                            images: [
+                                './images/Acacia.png'
+                            ],
+                            name: 'Acacia - 14K White Gold Round Three Stone Diamond Engagement Ring',
+                            price: '$3,600',
+                            color: [
+                                './images/yellow-gold.svg',
+                                './images/white-gold.svg',
+                                './images/platinum.svg',
+                            ],
+                            shape: [
+                                './images/round-shape.svg',
+                                './images/princess-cut.svg',
+                                
+                            ]
+                        },
+                        {
+                            images: [
+                                './images/Bara.png'
+                            ],
+                            name: 'Bara - 14K Yellow Gold Half Bezel East West Oval Diamond Engagement Ring',
+                            price: '$1,300',
+                            color: [
+                                './images/yellow-gold.svg',
+                                './images/white-gold.svg',
+                            ],
+                            shape: [
+                            './images/round-shape.svg',
+                                './images/emerald-cut.svg',
+                                
+                            ]
+                        },
+                        {
+                            images: [
+                                './images/Sanna.png'
+                            ],
+                            name: 'Sanna - Vintage Inspired 14K White-Yellow Gold Round Diamond Channel Set Engagement Ring',
+                            price: '$1,475',
+                            color: [
+                               './images/yellow-gold.svg',
+                                './images/white-gold.svg',
+                                './images/rose-white-gold.svg',
+                                './images/platinum.svg',
+
+
+                            ],
+                            shape: [
+                                './images/round-shape.svg',
+                                './images/oval-shape.svg',
+                                './images/cushion-cut.svg',
+                            ]
+                        },
+                        {
+                            images: [
+                                './images/Aiva.png'
+                            ],
+                            name: 'Aiva - 14K White Gold Bypass Oval Diamond Engagement Ring',
+                            price: '$1,825',
+                            color: [
+                               './images/yellow-gold.svg',
+                                './images/white-gold.svg',
+                            ],
+                            shape: [
+                                './images/round-shape.svg',
+                                './images/oval-shape.svg',
+                            ]
+                        },
+                        {
+                            images: [
+                                './images/Brexley.png'
+                            ],
+                            name: 'Brexley - 14K White Gold Oval Diamond Engagement Ring',
+                            price: '$2,750',
+                            color: [
+                                './images/yellow-gold.svg',
+                                './images/white-gold.svg',
+                                './images/rose-gold.svg',
+                            ],
+                            shape: [
+                                './images/round-shape.svg',
+                                './images/oval-shape.svg',
+                                './images/emerald-cut.svg',
+                                './images/cushion-cut.svg',
+                            ]
+                        },
+                    ],
+                    
+
                     items1:[
+                        {
+                            images: [
+                                './images/Marline.jpg'
+                            ],
+                            name: 'Marline - 14K Yellow Gold Round Diamond Engagement Ring',
+                            price: '$1,325',
+                            color: [
+                                './images/yellow-gold.svg',
+                                './images/white-gold.svg',
+                            ]
+                        },
+                        {
+                            images: [
+                                './images/Sandi.jpg'
+                            ],
+                            name: 'Sandi - 14K White-Yellow Gold Round Diamond Engagement Ring',
+                            price: '$1,375',
+                            color: [
+                                './images/yellow-gold.svg',
+                                './images/white-gold.svg',
+                            ]
+                        },
+                        {
+                            images: [
+                                './images/Love.jpg'
+                            ],
+                            name: 'Love - 14K White-Rose Gold Diamond Engagement Ring',
+                            price: '$2,475',
+                            color: [
+                                './images/yellow-gold.svg', 
+                                './images/white-yellow-gold.svg',
+                                './images/rose-white-gold.svg',
+                                './images/platinum.svg'
+                            ],
+                        },
+                        {
+                            images: [
+                                './images/Grasey.png',
+                            ],
+                            name: 'Grasey - 14K White Yellow Gold Round Solitaire Engagement Ring',
+                            price: '$900',
+                            shape: [
+                                './images/round-shape.svg',
+                                './images/oval-shape.svg',
+                            ]
+                        },
+                        {
+                            images: [
+                                './images/Eva.png'
+                            ],
+                            name: 'Eva - 14K White Gold Emerald Cut Diamond Engagement Ring',
+                            price: '$1,800',
+                            color: [
+                                './images/yellow-gold.svg',
+                                './images/white-gold.svg',
+                            ]
+                        },
+                        {
+                            images: [
+                                './images/Delphi.png'
+                            ],
+                            name: 'Delphi - 14K White-Yellow Gold Bypass Oval Diamond Engagement Ring',
+                            price: '$1,125',
+                            color: [
+                                './images/yellow-gold.svg',
+                                './images/white-gold.svg',
+                                './images/platinum.svg',
+                                './images/rose-gold.svg',
+
+                            ],
+                        },
+                        {
+                            images: [
+                                './images/Juliet.png'
+                            ],
+                            name: 'Juliet - 14K White Gold Round Diamond Engagement Ring',
+                            price: '$2,975',
+                            color: [
+                               './images/yellow-gold.svg',
+                                './images/white-gold.svg',
+                                './images/rose-gold.svg',
+                                './images/platinum.svg',
+                            ],
+                        },
+                        {
+                            images: [
+                                './images/Ryland.png'
+                            ],
+                            name: 'Ryland - 18k White Gold Octagonal Halo Round Diamond Engagement Ring',
+                            price: '$4,000',
+                            color: [
+                                './images/yellow-gold.svg',
+                                './images/white-gold.svg',
+                                './images/rose-gold.svg',
+                            ],
+                        },
+                        {
+                            images: [
+                                './images/Linny.webp',
+                                './images/Linny2.webp',
+                            ],
+                            name: 'Linny - 14K Yellow Gold Round Bezel Set Diamond Engagement Ring',
+                            price: '$1,000',
+                            shape: [
+                                './images/round-shape.svg',
+                                './images/oval-shape.svg',
+                                './images/emerald-cut.svg',
+                            ]
+                        },
+                        {
+                            images: [
+                                './images/Feah.png'
+                            ],
+                            name: 'Feah - 14K Yellow-White Gold Wide Band Oval Diamond Engagement Ring',
+                            price: '$3,250',
+                            color: [
+                                './images/white-gold.svg',
+                                './images/white-yellow-gold.svg',
+                            ],
+                        },
+                        {
+                            images: [
+                                './images/Leina.png'
+                            ],
+                            name: 'Leina - 14K White Gold Pear Shape Hidden Halo Bypass Engagement Ringina',
+                            price: '$2,050',
+                            color: [
+                                './images/yellow-gold.svg',
+                                './images/white-gold.svg',
+                                './images/rose-gold.svg',
+                            ],
+                        },
+                        {
+                            images: [
+                                './images/Darline.png'
+                            ],
+                            name: 'Darline - 14K White Gold Emerald Cut Three Stone Diamond Engagement Ring',
+                            price: '$1,725',
+                            shape: [
+                                './images/oval-shape.svg',
+                                './images/emerald-Cut.svg',
+                                './images/radiant-cut.svg',
+                            ]
+                        },
+                        {
+                            images: [
+                                './images/Mystic.png'
+                            ],
+                            name: 'Mystic - 14K White-Rose Gold Pear Shape Halo Diamond Engagement Ring',
+                            price: '$4,600',
+                            color: [
+                               './images/white-gold.svg',
+                                './images/rose-white-gold.svg',
+                               
+                            ],
+                        },
+
+                    ],
+
+                    items2:[
                         {
                             images: [
                                 './images/Bonnie.jpg'
@@ -126,396 +541,8 @@
                             name: 'Anita - 18K White Gold Emerald Cut Halo Five Stone Diamond Engagement Ring',
                             price: '$5,100',
                         },
-                    ],  
+                    ], 
 
-
-                    items: [
-                        {
-                            images: [
-                                './images/Linny.webp',
-                                './images/Linny2.webp',
-                            ],
-                            name: 'Linny - 14K Yellow Gold Round Bezel Set Diamond Engagement Ring',
-                            price: '$1,000',
-                            shape: [
-                                './images/round-shape.svg',
-                                './images/oval-shape.svg',
-                                './images/emerald-cut.svg',
-                            ]
-                        },
-                        
-                        {
-                            images: [
-                                './images/Marline.jpg'
-                            ],
-                            name: 'Marline - 14K Yellow Gold Round Diamond Engagement Ring',
-                            price: '$1,325',
-                            color: [
-                                'Yellow Gold',
-                                'White Gold',
-                            ]
-                        },
-                        {
-                            images: [
-                                './images/Sandi.jpg'
-                            ],
-                            name: 'Sandi - 14K White-Yellow Gold Round Diamond Engagement Ring',
-                            price: '$1,375',
-                            color: [
-                                'Yellow Gold',
-                                'White Gold',
-                            ]
-                        },
-                        {
-                            images: [
-                                './images/Hart.jpg'
-                            ],
-                            name: 'Hart - 14K White Gold Hidden Halo Oval Diamond Engagement Ring',
-                            price: '$1,875',
-                            color: [
-                                'Yellow Gold',
-                                'White Gold',
-                            ],
-                            shape: [
-                                './images/round-shape.svg',
-                                './images/oval-shape.svg',
-                                './images/emerald-cut.svg',
-                            ]
-                        },
-                        {
-                            images: [
-                                './images/Martedi.jpg'
-                            ],
-                            name: 'Martedi - 14K White Gold Floral Round Diamond Engagement Ring',
-                            price: '$1,725',
-                            color: [
-                                'Yellow Gold',
-                                'White Gold',
-                            ],
-                            shape: [
-                                './images/round-shape.svg',
-                                './images/oval-shape.svg',
-                                './images/emerald-cut.svg',
-                            ]
-                        },
-                        {
-                            images: [
-                                './images/Love.jpg'
-                            ],
-                            name: 'Love - 14K White-Rose Gold Diamond Engagement Ring',
-                            price: '$2,475',
-                            color: [
-                                'Yellow Gold',
-                                'Yellow/White Gold',
-                                'White/Rose Gold',
-                                'Platinum'
-                            ],
-                        },
-                        {
-                            images: [
-                                './images/Evelina.jpg'
-                            ],
-                            name: 'Evelina - 14K White-Yellow Gold Diamond Engagement Ring',
-                            price: '$800',
-                            color: [
-                                'Yellow/White Gold',
-                                'White Gold',
-                                'Platinum'
-                            ],
-                            shape: [
-                                './images/round-shape.svg',
-                                './images/oval-shape.svg',
-                                './images/emerald-cut.svg',
-                            ]
-                        },
-                        {
-                            images: [
-                                './images/Zaira.jpg'
-                            ],
-                            name: 'Zaira - 14K White-Rose Gold Round Free Form Diamond Engagement Ring',
-                            price: '$4,500',
-                            color: [
-                                'Yellow/White Gold',
-                                'White Gold',
-                                'Platinum'
-                            ],
-                            shape: [
-                                './images/round-shape.svg',
-                                './images/oval-shape.svg',
-                                './images/emerald-cut.svg',
-                            ]
-                        },
-                        {
-                            images: [
-                                './images/Grasey.png',
-                            ],
-                            name: 'Grasey - 14K White Yellow Gold Round Solitaire Engagement Ring',
-                            price: '$900',
-                            shape: [
-                                './images/round-shape.svg',
-                                './images/oval-shape.svg',
-                            ]
-                        },
-                        {
-                            images: [
-                                './images/Eva.png'
-                            ],
-                            name: 'Eva - 14K White Gold Emerald Cut Diamond Engagement Ring',
-                            price: '$1,800',
-                            color: [
-                                'Yellow Gold',
-                                'White Gold',
-                            ]
-                        },
-                        {
-                            images: [
-                                './images/Eliza.png'
-                            ],
-                            name: 'Eliza - Vintage Inspired 14K White Gold Split Shank Round Diamond Engagement Ring',
-                            price: '$1,100',
-                            color: [
-                                'White Gold',
-                                'Yellow/White Gold',
-                                'White/Rose Gold',
-                            ],
-                            shape: [
-                                './images/round-shape.svg',
-                                './images/oval-shape.svg',
-                                './images/princess-cut.svg',
-                                './images/pear-shape.svg',
-                            ]
-                        },
-                        {
-                            images: [
-                                './images/Luca.png'
-                            ],
-                            name: 'Luca - Art Deco 14K White Gold Round Diamond Channel Set Engagement Ring',
-                            price: '$2,975',
-                            color: [
-                                'Yellow Gold',
-                                'White Gold',
-                                'Platinum',
-                                'Rose Gold',
-
-                            ],
-                            shape: [
-                                 './images/round-shape.svg',
-                                './images/oval-shape.svg',
-                                './images/emerald-cut.svg',
-                                './images/cushion-cut.svg',
-                                './images/princess-cut.svg',
-                            ]
-                        },
-                        {
-                            images: [
-                                './images/Delphi.png'
-                            ],
-                            name: 'Delphi - 14K White-Yellow Gold Bypass Oval Diamond Engagement Ring',
-                            price: '$1,125',
-                            color: [
-                                'Yellow Gold',
-                                'White Gold',
-                                'Platinum',
-                                'Rose Gold',
-
-                            ],
-                        },
-                        
-                        
-                        {
-                            images: [
-                                './images/Rainah.png'
-                            ],
-                            name: 'Rainah - 14K White Gold Hidden Halo Oval Diamond Engagement Ring',
-                            price: '$1,550',
-                            color: [
-                                'Yellow Gold',
-                                'White Gold',
-
-                            ],
-                            shape: [
-                                 './images/round-shape.svg',
-                                './images/oval-shape.svg',
-                                './images/emerald-cut.svg',
-                            ]
-                        },
-                        {
-                            images: [
-                                './images/Mason.png'
-                            ],
-                            name: 'Mason - 14K White Gold Round Diamond Engagement Ring',
-                            price: '$2,075',
-                            color: [
-                                'White Gold',
-                                'Yellow/White Gold',
-                                'White/Rose Gold',
-
-                            ],
-                            shape: [
-                                 './images/round-shape.svg',
-                                './images/oval-shape.svg',
-                                './images/emerald-cut.svg',
-                            ]
-                        },
-                        {
-                            images: [
-                                './images/Acacia.png'
-                            ],
-                            name: 'Acacia - 14K White Gold Round Three Stone Diamond Engagement Ring',
-                            price: '$3,600',
-                            color: [
-                                'White Gold',
-                                'Yellow Gold',
-                                'Platinum',
-                            ],
-                            shape: [
-                                './images/round-shape.svg',
-                                './images/princess-cut.svg',
-                                
-                            ]
-                        },
-                        {
-                            images: [
-                                './images/Juliet.png'
-                            ],
-                            name: 'Juliet - 14K White Gold Round Diamond Engagement Ring',
-                            price: '$2,975',
-                            color: [
-                                'White Gold',
-                                'Yellow Gold',
-                                'Rose Gold',
-                                'Platinum',
-                            ],
-                        },
-                        {
-                            images: [
-                                './images/Bara.png'
-                            ],
-                            name: 'BaraBara - 14K Yellow Gold Half Bezel East West Oval Diamond Engagement Ring',
-                            price: '$1,300',
-                            color: [
-                                'White Gold',
-                                'Yellow Gold',
-                            ],
-                            shape: [
-                            './images/round-shape.svg',
-                                './images/emerald-cut.svg',
-                                
-                            ]
-                        },
-                        {
-                            images: [
-                                './images/Sanna.png'
-                            ],
-                            name: 'Sanna - Vintage Inspired 14K White-Yellow Gold Round Diamond Channel Set Engagement Ring',
-                            price: '$1,475',
-                            color: [
-                                'White Gold',
-                                'Yellow Gold',
-                                'White/Rose Gold',
-                                'Platinum',
-
-
-                            ],
-                            shape: [
-                                './images/round-shape.svg',
-                                './images/oval-shape.svg',
-                                './images/cushion-cut.svg',
-                            ]
-                        },
-                        {
-                            images: [
-                                './images/Ryland.png'
-                            ],
-                            name: 'Ryland - 18k White Gold Octagonal Halo Round Diamond Engagement Ring',
-                            price: '$4,000',
-                            color: [
-                                'White Gold',
-                                'Yellow Gold',
-                                'Rose Gold',
-                            ],
-                        },
-                        {
-                            images: [
-                                './images/Aiva.png'
-                            ],
-                            name: 'Aiva - 14K White Gold Bypass Oval Diamond Engagement Ring',
-                            price: '$1,825',
-                            color: [
-                                'White Gold',
-                                'Yellow Gold',
-                            ],
-                            shape: [
-                                './images/round-shape.svg',
-                                './images/oval-shape.svg',
-                            ]
-                        },
-                        {
-                            images: [
-                                './images/Mystic.png'
-                            ],
-                            name: 'Mystic - 14K White-Rose Gold Pear Shape Halo Diamond Engagement Ring',
-                            price: '$4,600',
-                            color: [
-                                'White Gold',
-                                'White/Rose Gold',
-                               
-                            ],
-                        },
-                        {
-                            images: [
-                                './images/Darline.png'
-                            ],
-                            name: 'Darline - 14K White Gold Emerald Cut Three Stone Diamond Engagement Ring',
-                            price: '$1,725',
-                            shape: [
-                                './images/oval-shape.svg',
-                                './images/emerald-Cut.svg',
-                                './images/radiant-cut.svg',
-                            ]
-                        },
-                        {
-                            images: [
-                                './images/Leina.png'
-                            ],
-                            name: 'Leina - 14K White Gold Pear Shape Hidden Halo Bypass Engagement Ringina',
-                            price: '$2,050',
-                            color: [
-                                'White Gold',
-                                'Yellow Gold',
-                                'Rose Gold',
-                            ],
-                        },
-                        {
-                            images: [
-                                './images/Feah.png'
-                            ],
-                            name: 'Feah - 14K Yellow-White Gold Wide Band Oval Diamond Engagement Ring',
-                            price: '$3,250',
-                            color: [
-                                'White Gold',
-                                'Yellow/White Gold',
-                            ],
-                        },
-                        {
-                            images: [
-                                './images/Brexley.png'
-                            ],
-                            name: 'Brexley - 14K White Gold Oval Diamond Engagement Ring',
-                            price: '$2,750',
-                            color: [
-                                'White Gold',
-                                'Yellow Gold',
-                                'Rose Gold',
-                            ],
-                            shape: [
-                                './images/round-shape.svg',
-                                './images/oval-shape.svg',
-                                './images/emerald-cut.svg',
-                                './images/cushion-cut.svg',
-                            ]
-                        },
-                    ],
                     init(){
                         console.log(this.items);
                     }
