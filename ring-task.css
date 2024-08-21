@@ -69,7 +69,7 @@ body{
     padding: 0.5em 0.5em 0.5em 1.5em;
 }
 .shape-images{  
-    width: 50%;
+    width: calc(50% - 1px);
     height: 65px;
     border-right: 1px solid #EBEBEB;
     display: flex;
@@ -85,12 +85,13 @@ body{
 .color-images{
     width: 50%;
     display: flex;
+    height: 65px;
     justify-content: space-evenly;
     align-items: center;
     position: absolute;
+    align-items: flex-end;
     top: 15;
     right: 0;
-    bottom: 0;
 }
 .color-images img{
     cursor: pointer;
@@ -101,7 +102,7 @@ body{
 }
 .img{
     cursor: pointer;
-    width: 70%;
+    width: 50%;
     display: flex;
     justify-content: space-evenly;
 }
@@ -119,6 +120,9 @@ body{
     top: 0;
     font-size: 12px;
 }
+.top-20{
+    top: 20px;
+}
 .box-1:hover{
     border: 1px solid #898B99;
 }
@@ -132,7 +136,10 @@ body{
 .hidden{
     display: none;
 }
-
+.item-name:hover{
+    cursor: pointer;
+    opacity: 0.5;
+}
 @media  (max-width: 1024px){
     .grid-container{
         grid-template-columns: repeat(3, 1fr);

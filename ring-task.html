@@ -4,7 +4,6 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Moderustic:wght@300..800&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <link rel="stylesheet" href="ring-task.css">
     </head>
@@ -12,11 +11,11 @@
         <div class="grid-container" x-data="ringTaskAlpineComponent()">
             <!-- structure for both shapes and color -->
             <template x-for="item in items" :key="item.name">
-                <div class="box-1" @mouseover="hoveredItem = item" @mouseleave="hoveredItem = null">
+                <div class="box-1" @mouseover="hoveredItem = item" @mouseleave="hoveredItem = ''">
                     <div class="child-1">
                         <img :src="item.images[0]" class="default-img" :class="{ 'hidden': hoveredItem === item }"/> 
                         <img :src="item.images[1]" class="hovered-img" :class="{ 'hidden': hoveredItem !== item }"/>
-                    </div>   
+                    </div>  
                     <div class="child-2">
                         <div x-show="hoveredItem !== item">
                             <div class="item-name" x-text="item.name"></div>
@@ -45,7 +44,7 @@
             </template>
                 <!-- structure for colors or shape only -->
             <template x-for="item in items1" :key="item.name">
-                <div class="box-1" @mouseover="hoveredItem = item" @mouseleave="hoveredItem = null">
+                <div class="box-1" @mouseover="hoveredItem = item" @mouseleave="hoveredItem = ''">
                     <div class="child-1">
                         <img :src="item.images[0]" class="default-img" :class="{ 'hidden': hoveredItem === item }"/>
                         <img :src="item.images[1]" class="hovered-img" :class="{ 'hidden': hoveredItem !== item }"/>
@@ -57,8 +56,14 @@
                         </div>
                         <div class="child-3" x-show="hoveredItem === item">
                             <div class="shape-color img">
+                                <template x-for="shapeName in item.shapeName" :key="shapeName">
+                                    <div class="shape-name top-20" x-text="item.shapeName"></div>
+                                </template>
                                 <template x-for="shape in item.shape" :key="shape">
                                     <img :src="shape" class="height-width"/>
+                                </template>
+                                <template x-for="colorName in item.colorName" :key="colorName">
+                                    <div class="color-name top-20" x-text="item.colorName"></div>
                                 </template>
                                 <template x-for="color in item.color" :key="color">
                                     <img :src="color" class="height-width"/>
@@ -71,7 +76,7 @@
             <!-- structure for name and price only -->
             <template x-for="item in items2">
                 <div class="box-1">
-                    <div class="items2-child-1" @mouseover="hoveredItem = item" @mouseleave="hoveredItem = null">
+                    <div class="items2-child-1" @mouseover="hoveredItem = item" @mouseleave="hoveredItem = ''">
                         <img :src="item.images[0]" class="default-img" :class="{ 'hidden': hoveredItem === item }"/>
                         <img :src="item.images[1]" class="hovered-img" :class="{ 'hidden': hoveredItem !== item }"/>
                     </div>   
@@ -85,7 +90,7 @@
         <script>
             function ringTaskAlpineComponent() {
                 return {
-                    hoveredItem: null,         
+                    hoveredItem: '',
                     items: [ 
                         {
                             images: [
@@ -98,17 +103,17 @@
                                 './images/white-gold.svg',
                                 './images/yellow-gold.svg',
                             ],
-                            colorName: [
-                                '14k White gold',
-                            ],
                             shape: [
                                 './images/round-shape.svg',
                                 './images/oval-shape.svg',
                                 './images/emerald-cut.svg',
                             ],
+                            colorName: [
+                                '14k White Gold',
+                            ],
                             shapeName: [
                                 'Round',
-                            ]
+                            ],
                         },
                         {
                             images: [
@@ -125,7 +130,13 @@
                                 './images/round-shape.svg',
                                 './images/oval-shape.svg',
                                 './images/emerald-cut.svg',
-                            ]
+                            ],
+                            colorName: [
+                                '14k White Gold',
+                            ],
+                            shapeName: [
+                                'Round',
+                            ],
                         },
                         {
                             images: [
@@ -143,7 +154,13 @@
                                 './images/round-shape.svg',
                                 './images/oval-shape.svg',
                                 './images/emerald-cut.svg',
-                            ]
+                            ],
+                            colorName: [
+                                '14k White Gold',
+                            ],
+                            shapeName: [
+                                'Round',
+                            ],
                         },
                         {
                             images: [
@@ -161,7 +178,13 @@
                                 './images/round-shape.svg',
                                 './images/oval-shape.svg',
                                 './images/emerald-cut.svg',
-                            ]
+                            ],
+                            colorName: [
+                                '14k White Gold',
+                            ],
+                            shapeName: [
+                                'Round',
+                            ],
                         },
                         {
                             images: [
@@ -180,7 +203,13 @@
                                 './images/oval-shape.svg',
                                 './images/princess-cut.svg',
                                 './images/pear-shape.svg',
-                            ]
+                            ],
+                            colorName: [
+                                '14k White Gold',
+                            ],
+                            shapeName: [
+                                'Round',
+                            ],
                         },
                         {
                             images: [
@@ -202,7 +231,13 @@
                                 './images/emerald-cut.svg',
                                 './images/cushion-cut.svg',
                                 './images/princess-cut.svg',
-                            ]
+                            ],
+                            colorName: [
+                                '14k White Gold',
+                            ],
+                            shapeName: [
+                                'Round',
+                            ],
                         },      
                         {
                             images: [
@@ -220,7 +255,13 @@
                                  './images/round-shape.svg',
                                 './images/oval-shape.svg',
                                 './images/emerald-cut.svg',
-                            ]
+                            ],
+                            colorName: [
+                                '14k White Gold',
+                            ],
+                            shapeName: [
+                                'Round',
+                            ],
                         },
                         {
                             images: [
@@ -239,7 +280,13 @@
                                  './images/round-shape.svg',
                                 './images/oval-shape.svg',
                                 './images/emerald-cut.svg',
-                            ]
+                            ],
+                            colorName: [
+                                '14k White Gold',
+                            ],
+                            shapeName: [
+                                'Round',
+                            ],
                         },
                         {
                             images: [
@@ -257,7 +304,13 @@
                                 './images/round-shape.svg',
                                 './images/princess-cut.svg',
                                 
-                            ]
+                            ],
+                            colorName: [
+                                '14k White Gold',
+                            ],
+                            shapeName: [
+                                'Round',
+                            ],
                         },
                         {
                             images: [
@@ -274,7 +327,13 @@
                             './images/round-shape.svg',
                                 './images/emerald-cut.svg',
                                 
-                            ]
+                            ],
+                            colorName: [
+                                '14k White Gold',
+                            ],
+                            shapeName: [
+                                'Round',
+                            ],
                         },
                         {
                             images: [
@@ -295,7 +354,13 @@
                                 './images/round-shape.svg',
                                 './images/oval-shape.svg',
                                 './images/cushion-cut.svg',
-                            ]
+                            ],
+                            colorName: [
+                                '14k White Gold',
+                            ],
+                            shapeName: [
+                                'Round',
+                            ],
                         },
                         {
                             images: [
@@ -311,7 +376,13 @@
                             shape: [
                                 './images/round-shape.svg',
                                 './images/oval-shape.svg',
-                            ]
+                            ],
+                            colorName: [
+                                '14k White Gold',
+                            ],
+                            shapeName: [
+                                'Round',
+                            ],
                         },
                         {
                             images: [
@@ -330,7 +401,13 @@
                                 './images/oval-shape.svg',
                                 './images/emerald-cut.svg',
                                 './images/cushion-cut.svg',
-                            ]
+                            ],
+                            colorName: [
+                                '14k White Gold',
+                            ],
+                            shapeName: [
+                                'Round',
+                            ],
                         },
                     ],
                     
@@ -345,7 +422,10 @@
                             color: [
                                 './images/yellow-gold.svg',
                                 './images/white-gold.svg',
-                            ]
+                            ],
+                            colorName: [
+                                '14k Yellow Gold',
+                            ],
                         },
                         {
                             images: [
@@ -357,7 +437,10 @@
                             color: [
                                 './images/yellow-gold.svg',
                                 './images/white-gold.svg',
-                            ]
+                            ],
+                            colorName: [
+                                '14k Yellow Gold',
+                            ],
                         },
                         {
                             images: [
@@ -372,6 +455,9 @@
                                 './images/rose-white-gold.svg',
                                 './images/platinum.svg'
                             ],
+                            colorName: [
+                                '14k White/Rose Gold',
+                            ],
                         },
                         {
                             images: [
@@ -383,7 +469,10 @@
                             shape: [
                                 './images/round-shape.svg',
                                 './images/oval-shape.svg',
-                            ]
+                            ],
+                            shapeName: [
+                                'Round',
+                            ],
                         },
                         {
                             images: [
@@ -395,7 +484,10 @@
                             color: [
                                 './images/yellow-gold.svg',
                                 './images/white-gold.svg',
-                            ]
+                            ],
+                            colorName: [
+                                '14k White Gold',
+                            ],
                         },
                         {
                             images: [
@@ -409,7 +501,9 @@
                                 './images/white-gold.svg',
                                 './images/platinum.svg',
                                 './images/rose-gold.svg',
-
+                            ],
+                            colorName: [
+                                '14k White/Yellow Gold',
                             ],
                         },
                         {
@@ -425,6 +519,9 @@
                                 './images/rose-gold.svg',
                                 './images/platinum.svg',
                             ],
+                            colorName: [
+                                '14k White Gold',
+                            ],
                         },
                         {
                             images: [
@@ -438,6 +535,9 @@
                                 './images/white-gold.svg',
                                 './images/rose-gold.svg',
                             ],
+                            colorName: [
+                                '14k White Gold',
+                            ],
                         },
                         {
                             images: [
@@ -450,7 +550,10 @@
                                 './images/round-shape.svg',
                                 './images/oval-shape.svg',
                                 './images/emerald-cut.svg',
-                            ]
+                            ],
+                            shapeName: [
+                                'Round',
+                            ],
                         },
                         {
                             images: [
@@ -462,6 +565,9 @@
                             color: [
                                 './images/white-gold.svg',
                                 './images/white-yellow-gold.svg',
+                            ],
+                            colorName: [
+                                '14k Yellow-White Gold',
                             ],
                         },
                         {
@@ -476,6 +582,9 @@
                                 './images/white-gold.svg',
                                 './images/rose-gold.svg',
                             ],
+                            colorName: [
+                                '14k White Gold',
+                            ],
                         },
                         {
                             images: [
@@ -485,10 +594,13 @@
                             name: 'Darline - 14K White Gold Emerald Cut Three Stone Diamond Engagement Ring',
                             price: '$1,725',
                             shape: [
-                                './images/oval-shape.svg',
                                 './images/emerald-Cut.svg',
+                                './images/oval-shape.svg',
                                 './images/radiant-cut.svg',
-                            ]
+                            ],
+                            shapeName: [
+                                'Emerald Cut',
+                            ],
                         },
                         {
                             images: [
@@ -499,8 +611,10 @@
                             price: '$4,600',
                             color: [
                                 './images/white-gold.svg',
-                                './images/rose-white-gold.svg',
-                               
+                                './images/rose-white-gold.svg', 
+                            ],
+                            colorName: [
+                                '14k White/Rose Gold',
                             ],
                         },
 
@@ -591,7 +705,8 @@
                     ], 
                     init(){
                         console.log(this.items);
-                    }
+                        
+                    },
                 }
             }   
         </script>
