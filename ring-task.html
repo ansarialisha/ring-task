@@ -12,7 +12,7 @@
         <div class="grid-container" x-data="ringTaskAlpineComponent()">
             <!-- structure for both shapes and color -->
             <template x-for="item in items" :key="item.name">
-                <div class="box-1" @mouseover="hoveredItem = item" @mouseleave="hoveredItem = ''">
+                <div class="box-1" @mouseover="hoveredItem = item" @mouseleave="hoveredItem = null">
                     <div class="child-1">
                         <img :src="item.images[0]" class="default-img" :class="{ 'hidden': hoveredItem === item }"/> 
                         <img :src="item.images[1]" class="hovered-img" :class="{ 'hidden': hoveredItem !== item }"/>
@@ -45,7 +45,7 @@
             </template>
                 <!-- structure for colors or shape only -->
             <template x-for="item in items1" :key="item.name">
-                <div class="box-1" @mouseover="hoveredItem = item" @mouseleave="hoveredItem = ''">
+                <div class="box-1" @mouseover="hoveredItem = item" @mouseleave="hoveredItem = null">
                     <div class="child-1">
                         <img :src="item.images[0]" class="default-img" :class="{ 'hidden': hoveredItem === item }"/>
                         <img :src="item.images[1]" class="hovered-img" :class="{ 'hidden': hoveredItem !== item }"/>
@@ -77,7 +77,7 @@
             <!-- structure for name and price only -->
             <template x-for="item in items2">
                 <div class="box-1">
-                    <div class="items2-child-1" @mouseover="hoveredItem = item" @mouseleave="hoveredItem = ''">
+                    <div class="items2-child-1" @mouseover="hoveredItem = item" @mouseleave="hoveredItem = null">
                         <img :src="item.images[0]" class="default-img" :class="{ 'hidden': hoveredItem === item }"/>
                         <img :src="item.images[1]" class="hovered-img" :class="{ 'hidden': hoveredItem !== item }"/>
                     </div>   
@@ -91,7 +91,10 @@
         <script>
             function ringTaskAlpineComponent() {
                 return {
-                      hoveredItem: '',         
+                    hoveredItem: null,  
+                    init: function(){
+                        
+                    },
                     items: [ 
                         {
                             images: [
@@ -706,11 +709,9 @@
                             price: '$5,100',
                         },
                     ], 
-                    init(){
-                        console.log(this.items2);
-                    },
                 }
-            }   
+            } 
+
         </script>
     </body>
 </html>

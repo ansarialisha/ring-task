@@ -1,3 +1,4 @@
+
 body{
     display: flex;
     justify-content: center;
@@ -134,7 +135,18 @@ body{
 }
 @media  (max-width: 768px){
     .grid-container{
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .box-1{
+        width: 15em;
+    }
+    .default-img{
+        height: 200px;
+        object-fit: cover;
+    }
+    .hovered-img{
+        height: 180px;
+        width: 85%;
     }
 }
 @media  (max-width: 425px){
