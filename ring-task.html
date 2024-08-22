@@ -23,26 +23,27 @@
                             <div class="item-price" x-text="item.price"></div>
                         </div>
                         <div class="child-3" x-show="hoveredItem === item">
-                            <div class="shape-images left-0">
-                                <template x-for="shapeName in item.shapeName" :key="shapeName">
-                                    <div class="shape-name" x-text="item.shapeName"></div>
-                                </template>
-                                <template x-for="shape in item.shape" :key="shape">
-                                    <img :src="shape" class="height-width"/>
+                            <div class="shape-images left-0 border-right">
+                                <template x-for="(shape, index) in item.shape" :key="shape">
+                                    <div>
+                                        <img :src="shape" class="height-width" @mouseover="changeShapeName(shape, item)"/>
+                                        <div class="shape-name" x-text="item.shapeName[index]"></div>
+                                    </div>
                                 </template>
                             </div>
                             <div class="color-images right-0">
-                                <template x-for="colorName in item.colorName" :key="colorName">
-                                    <div class="color-name" x-text="item.colorName"></div>
-                                </template>
-                                <template x-for="color in item.color" :key="color">
-                                    <img :src="color" class="height-width"/>
+                                <template x-for="(color, index) in item.color" :key="color">
+                                    <div>
+                                        <img :src="color" class="height-width" @mouseover="changeMetalName(color, item)"/>
+                                        <div class="color-name" x-text="item.colorName[index]"></div>
+                                    </div>
                                 </template>
                             </div>
                         </div>
                     </div>
                 </div>
             </template>
+            
                 <!-- structure for colors or shape only -->
             <template x-for="item in items1" :key="item.name">
                 <div class="box-1" @mouseover="hoveredItem = item" @mouseleave="hoveredItem = null">
@@ -61,13 +62,13 @@
                                     <div class="shape-name top-20" x-text="item.shapeName"></div>
                                 </template>
                                 <template x-for="shape in item.shape" :key="shape">
-                                    <img :src="shape" class="height-width"/>
+                                    <img :src="shape" class="height-width" @mouseover="changeShapeName(shape, item)"/>
                                 </template>
                                 <template x-for="colorName in item.colorName" :key="colorName">
                                     <div class="color-name top-20" x-text="item.colorName"></div>
                                 </template>
                                 <template x-for="color in item.color" :key="color">
-                                    <img :src="color" class="height-width"/>
+                                    <img :src="color" class="height-width" @mouseover="changeMetalName(color, item)"/>
                                 </template>
                             </div>
                         </div>
@@ -117,8 +118,6 @@
                             ],
                             shapeName: [
                                 'Round',
-                                // 'Oval',
-                                // 'Emerald Cut',
                             ],
                         },
                         {
@@ -176,7 +175,7 @@
                             name: 'Zaira - 14K White-Rose Gold Round Free Form Diamond Engagement Ring',
                             price: '$4,500',
                             color: [
-                                './images/white-yellow-gold.svg',
+                                './images/rose-white-gold.svg',
                                 './images/white-gold.svg',
                                 './images/platinum.svg'
                             ],
@@ -600,7 +599,7 @@
                             name: 'Darline - 14K White Gold Emerald Cut Three Stone Diamond Engagement Ring',
                             price: '$1,725',
                             shape: [
-                                './images/emerald-Cut.svg',
+                                './images/emerald-cut.svg',
                                 './images/oval-shape.svg',
                                 './images/radiant-cut.svg',
                             ],
@@ -709,6 +708,40 @@
                             price: '$5,100',
                         },
                     ], 
+
+                    changeShapeName: function(shape, item) {
+                        const shapeNames = {
+                            './images/oval-shape.svg': 'Oval',
+                            './images/round-shape.svg': 'Round',
+                            './images/emerald-cut.svg': 'Emerald Cut',
+                            './images/pear-shape.svg': 'Pear',
+                            './images/cushion-cut.svg': 'Cushion Cut',
+                            './images/radiant-cut.svg': 'Radiant Cut',
+                            './images/princess-cut.svg': 'Princess Cut',
+                        };
+                        const shapeIndex = item.shape.indexOf(shape);
+                        if (shapeIndex !== -1) {
+                            item.shapeName = [shapeNames[shape] || 'Unknown'];
+                        }
+                    },
+                    changeMetalName(color, item) {
+                        const metalNames = {
+                            './images/white-gold.svg': '14K White Gold',
+                            './images/yellow-gold.svg': '14K Yellow Gold',
+                            './images/rose-gold.svg': '14K Rose Gold',
+                            './images/platinum.svg': 'Platinum',
+                            './images/rose-white-gold.svg': '14K Rose/White Gold',
+                            './images/white-yellow-gold.svg': '14K White/Yellow Gold'
+                        };
+
+                        // Find the index of the clicked color
+                        const metalIndex = item.color.indexOf(color);
+                        
+                        if (metalIndex !== -1) {
+                            // Update metalName based on the clicked color
+                            item.colorName = [metalNames[color] || 'Unknown'];
+                        }
+                    }
                 }
             } 
 
