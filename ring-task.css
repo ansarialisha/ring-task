@@ -31,7 +31,7 @@ body{
 }
 .child-2{
     height: 30%;
-    padding: 0.5em 0.5em 0.5em 1.5em;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;   
@@ -48,15 +48,17 @@ body{
 }
 .hovered-img{
     height: 220px;
-    width: 80%;
+    width: 85%;
     object-fit: cover;
 }
 .item-price{
     font-weight: 800;
     padding-top: 8px;
+    padding-left: 20px;
 }
 .item-name{
     font-size: 14px;
+    padding-left: 20px;
 }
 .items2-child-1{
     height: 75%;
@@ -67,13 +69,11 @@ body{
 }
 .items2-child-2{
     height: 25%;
-    padding: 0.5em 0.5em 0.5em 1.5em;
 }
 .shape-images , .color-images{  
     width: 50%;
     height: 65px;
     display: flex;
-    align-items: center;
     justify-content: space-evenly;
     align-items: flex-end;
     position: absolute;
@@ -99,17 +99,18 @@ body{
     height: 24px;
     width: 24px;
 }
-.shape-name , .color-name{
+.shape-name ,.color-name{
     position: absolute;
     top: 0;
+    left: 0;
     font-size: 11px;
     font-weight: 500;
-    width: 65%; 
+    width: 100%; 
     display: flex;
     justify-content: center;
 }
 .top-20{
-    top: 20px;
+    top: 10px;
 }
 .left-0{
     left: 0;
@@ -145,13 +146,13 @@ body{
     }
     .box-1{
         width: 15em;
+        aspect-ratio: 1/1.5;
     }
     .default-img{
         height: 200px;
         object-fit: cover;
     }
     .hovered-img{
-        height: 180px;
         width: 85%;
     }
 }
@@ -166,7 +167,7 @@ body{
     .box-1{
         width: 9em;
         aspect-ratio: 1/1.5; 
-         border: 1px solid #ddd;
+        border: 1px solid #ddd;
     }
     .default-img{
         height: 100px;
@@ -192,9 +193,6 @@ body{
     }
     .items2-child-1{
         height: 55%;
-    }
-    .items2-child-2 , .child-2{
-        padding: 10px;
     }
     .height-width{
         height: 20px;
