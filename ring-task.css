@@ -1,4 +1,13 @@
-
+.splide__slide img{
+    height: 220px;
+    width: 85%;
+    object-fit: cover;
+}
+.splide__slide{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 body{
     display: flex;
     justify-content: center;
@@ -109,7 +118,7 @@ body{
     display: flex;
     justify-content: center;
 }
-.top-20{
+.top-10{
     top: 10px;
 }
 .left-0{
