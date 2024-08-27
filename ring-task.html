@@ -12,23 +12,23 @@
             document.addEventListener('DOMContentLoaded', () => {
                 document.querySelectorAll('.splide').forEach((splideElement) => {
                     new Splide(splideElement, {
-                        type       : 'loop',
-                        arrows     : true,
+                        arrows: true,
+                        pagination: false,
                     }).mount();
                 });
             });
-          </script>
+        </script>
     </head>
     <body class="nunito-sans">
         <div class="grid-container" x-data="ringTaskAlpineComponent()">
             <!-- structure for both shapes and color -->
             <template x-for="item in items" :key="item.name">
                 <div class="box-1" @mouseover="hoveredItem = item" @mouseleave="hoveredItem = null">
-                    <div class="child-1">
+                    <div class="item-1">
                         <img :src="item.images[0]" class="default-img" :class="{ 'hidden': hoveredItem === item }"/> 
-                        <section id="image-carousel" class="splide" aria-label="Beautiful Images" :class="{ 'hidden': hoveredItem !== item }">
+                        <section id="image-carousel" class="splide" :class="{ 'hidden': hoveredItem !== item }">
                             <div class="splide__track">
-                                  <ul class="splide__list">
+                                <ul class="splide__list">
                                     <li class="splide__slide">
                                         <img :src="item.images[1]"/>
                                     </li>
@@ -44,16 +44,16 @@
                                     <li class="splide__slide">
                                         <img :src="item.images[5]"/>
                                     </li>
-                                  </ul>
+                                </ul>
                             </div>
                         </section>
                     </div>  
-                    <div class="child-2">
+                    <div class="item-2">
                         <div x-show="hoveredItem !== item">
                             <div class="item-name" x-text="item.name"></div>
                             <div class="item-price" x-text="item.price"></div>
                         </div>
-                        <div class="child-3" x-show="hoveredItem === item">
+                        <div class="item-2-child" x-show="hoveredItem === item">
                             <div class="shape-images left-0 border-right">
                                 <template x-for="(shape, index) in item.shape" :key="shape">
                                     <div>
@@ -77,7 +77,7 @@
                 <!-- structure for colors or shape only -->
             <template x-for="item in items1" :key="item.name">
                 <div class="box-1" @mouseover="hoveredItem = item" @mouseleave="hoveredItem = null">
-                    <div class="child-1">
+                    <div class="item-1">
                         <img :src="item.images[0]" class="default-img" :class="{ 'hidden': hoveredItem === item }"/> 
                         <section id="image-carousel" class="splide" aria-label="Beautiful Images" :class="{ 'hidden': hoveredItem !== item }">
                             <div class="splide__track">
@@ -101,12 +101,12 @@
                             </div>
                         </section>
                     </div>    
-                    <div class="child-2">
+                    <div class="item-2">
                         <div x-show="hoveredItem !== item">
                             <div class="item-name" x-text="item.name"></div>
                             <div class="item-price" x-text="item.price"></div>
                         </div>
-                        <div class="child-3" x-show="hoveredItem === item">
+                        <div class="item-2-child" x-show="hoveredItem === item">
                             <div class="shape-color img">
                                 <template x-for="shapeName in item.shapeName" :key="shapeName">
                                     <div class="shape-name top-10" x-text="item.shapeName"></div>
@@ -128,7 +128,7 @@
             <!-- structure for name and price only -->
             <template x-for="item in items2">
                 <div class="box-1">
-                    <div class="items2-child-1" @mouseover="hoveredItem = item" @mouseleave="hoveredItem = null">
+                    <div class="items2-item-1" @mouseover="hoveredItem = item" @mouseleave="hoveredItem = null">
                         <img :src="item.images[0]" class="default-img" :class="{ 'hidden': hoveredItem === item }"/> 
                         <section id="image-carousel" class="splide" aria-label="Beautiful Images" :class="{ 'hidden': hoveredItem !== item }">
                             <div class="splide__track">
@@ -152,7 +152,7 @@
                             </div>
                         </section>
                     </div>   
-                    <div class="items2-child-2">   
+                    <div class="items2-item-2">   
                         <div class="item-name" x-text="item.name"></div>
                         <div class="item-price" x-text="item.price"></div>
                     </div>
@@ -165,7 +165,6 @@
                     hoveredItem: null,  
                     init: function(){
                         console.log(this.items);
-                        
                     },
                     items: [ 
                         {
@@ -185,15 +184,15 @@
                                 './images/yellow-gold.svg',
                             ],
                             shape: [
-                                './images/round-shape.svg',
                                 './images/oval-shape.svg',
+                                './images/round-shape.svg',
                                 './images/emerald-cut.svg',
                             ],
                             colorName: [
                                 '14k White Gold',
                             ],
                             shapeName: [
-                                'Round',
+                                'Oval',
                             ],
                         },
                         {
@@ -365,7 +364,7 @@
                                 '14k White Gold',
                             ],
                             shapeName: [
-                                'Round',
+                                'Oval',
                             ],
                         },
                         {
@@ -449,7 +448,7 @@
                                 '14k White Gold',
                             ],
                             shapeName: [
-                                'Round',
+                                'Oval',
                             ],
                         },
                         {
@@ -506,7 +505,7 @@
                                 '14k White Gold',
                             ],
                             shapeName: [
-                                'Round',
+                                'Oval',
                             ],
                         },
                         {
@@ -535,7 +534,7 @@
                                 '14k White Gold',
                             ],
                             shapeName: [
-                                'Round',
+                                'Oval',
                             ],
                         },
                     ],
